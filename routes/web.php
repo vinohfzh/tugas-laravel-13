@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\TaskWebController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('tasks.index');
 });
+
+Route::resource('tasks', TaskWebController::class);
 Route::get('/csrf-info', function () {
     return response()->json([
         'success' => true,
